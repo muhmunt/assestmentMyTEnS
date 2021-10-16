@@ -18,7 +18,11 @@ cli
   .option('-t, --type <type>', 'choose file')
   .option('-o, --output', 'save output to your directory')
   .action(async function(file, options) {
-   var convert_data = await convert({file: options.args[1], type: options._optionValues.type, output: options._optionValues.output, output_dir: options.args[2] })
+    if(!options.args[1]){
+      console.log("note: mytools -h for help commands");
+    }else{
+      var convert_data = await convert({file: options.args[1], type: options._optionValues.type, output: options._optionValues.output, output_dir: options.args[2] })
+    }
   });
 
 cli.parse(process.argv);

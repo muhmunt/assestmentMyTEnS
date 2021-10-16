@@ -13,10 +13,16 @@ async function convertToJSON(data) {
   return arrData
 }
 
+// Convert
 async function convert(options) {
   const typeFormat = options.type === 'json' ? options.type : 'txt'
   const outputDir = options.output ? options.output_dir : 'D:/'
   const result = await readFile(options.file)
+  console.log(options.file)
+  if(!options.file){
+    console.log('mytools -h for command help')
+    return
+  }
 
   if (result.success) {
     if (options.type && !(['text', 'json'].includes(options.type))) {
@@ -34,6 +40,7 @@ async function convert(options) {
       throw new Error(writeFileToDir.message)
     }
   } else {
+    console.log('File not Found');
     throw new Error(`File "${options.file}" is not found`)
   }
 }
