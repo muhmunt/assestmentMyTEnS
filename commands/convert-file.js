@@ -1,6 +1,4 @@
 const fs = require('fs')
-const { hideBin } = require('yargs/helpers')
-const argv = require('yargs/yargs')(hideBin(process.argv)).argv
 
 // Convert Log to JSON Format
 async function convertToJSON(data) {
